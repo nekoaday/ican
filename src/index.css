@@ -1,0 +1,174 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 现代金融科技风格 · 保额罗盘 InsureCompass
+   主色：深海军蓝 (Deep Navy)
+   点缀：活力青绿 (Teal / Emerald)
+   背景：清新冷白/浅灰，大字号数字展现，高清晰度与无衬线字体
+*/
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    /* 浅色背景：干净柔和的高级冷灰白 */
+    --background: 210 25% 98%;
+    --foreground: 215 35% 15%;
+    
+    /* 卡片：纯白，微阴影 */
+    --card: 0 0% 100%;
+    --card-foreground: 215 35% 15%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 35% 15%;
+    
+    /* 深海军蓝 Primary */
+    --primary: 213 72% 16%;
+    --primary-foreground: 210 40% 98%;
+    
+    /* 辅色 / 浅蓝灰 */
+    --secondary: 210 25% 93%;
+    --secondary-foreground: 213 60% 20%;
+    
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 16% 47%;
+    
+    /* 活力青绿 Accent */
+    --accent: 173 80% 32%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 173 80% 32%;
+    
+    /* 状态与图表色彩 */
+    --success: 160 84% 36%;
+    --warning: 38 92% 50%;
+    --info: 210 90% 50%;
+    
+    --chart-1: 213 72% 20%; /* 深海军蓝 (定期寿险) */
+    --chart-2: 173 80% 34%; /* 青绿色 (重疾险) */
+    --chart-3: 199 89% 48%; /* 科技天蓝 (已有保障) */
+    --chart-4: 38 92% 50%;  /* 琥珀金 (待补缺口) */
+    --chart-5: 142 71% 45%; /* 稳健绿 (覆盖充足) */
+
+    --sidebar-background: 213 72% 14%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 173 80% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 213 60% 22%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 213 40% 24%;
+    --sidebar-ring: 173 80% 36%;
+  }
+
+  .dark {
+    --background: 216 35% 9%;
+    --foreground: 210 30% 94%;
+    --card: 216 33% 13%;
+    --card-foreground: 210 30% 94%;
+    --popover: 216 33% 13%;
+    --popover-foreground: 210 30% 94%;
+    --primary: 173 70% 45%;
+    --primary-foreground: 216 35% 9%;
+    --secondary: 216 28% 18%;
+    --secondary-foreground: 210 30% 94%;
+    --muted: 216 25% 18%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 173 75% 42%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 216 24% 22%;
+    --input: 216 24% 22%;
+    --ring: 173 75% 42%;
+    --sidebar-background: 216 40% 8%;
+    --sidebar-foreground: 210 30% 94%;
+    --sidebar-primary: 173 70% 45%;
+    --sidebar-primary-foreground: 216 35% 9%;
+    --sidebar-accent: 216 30% 16%;
+    --sidebar-accent-foreground: 210 30% 94%;
+    --sidebar-border: 216 24% 20%;
+    --sidebar-ring: 173 75% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-accent/20 selection:text-foreground;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background-image: 
+      radial-gradient(circle at 10% 20%, hsl(var(--primary) / 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, hsl(var(--accent) / 0.03) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+}
+
+@layer components {
+  /* 金融大数字强调 */
+  .stat-num {
+    font-feature-settings: "tnum" 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  /* 精致卡片光感描边 */
+  .fintech-card {
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    box-shadow: 0 4px 20px -4px rgba(10, 37, 64, 0.06), 0 2px 6px -2px rgba(10, 37, 64, 0.03);
+    transition: all 0.2s ease-in-out;
+  }
+
+  .fintech-card:hover {
+    box-shadow: 0 8px 26px -4px rgba(10, 37, 64, 0.09), 0 3px 8px -2px rgba(10, 37, 64, 0.04);
+  }
+}
+
+/* 打印与PDF专用样式，屏蔽导航与悬浮聊天窗口，重整页面为纯白排版 */
+@media print {
+  @page { size: A4; margin: 14mm; }
+  main { padding: 0 !important; max-width: none !important; }
+  .fintech-card { break-inside: avoid; box-shadow: none !important; }
+  .print-page > .grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  [data-sonner-toaster] { display: none !important; }
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 12pt;
+  }
+
+  .no-print,
+  #ai-chat-assistant-container,
+  button:not(.print-keep),
+  header,
+  footer {
+    display: none !important;
+  }
+
+  .print-page {
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .page-break-before {
+    page-break-before: always;
+  }
+}
