@@ -1,6 +1,7 @@
 # 材料编辑来源
 
 - `build_pdfs.py`：技术文档和安全自评的内容与排版源文件；使用 ReportLab 和中文字体生成 PDF。
+- `build_user_guide.py`：使用说明的内容与排版源文件；运行 `python docs/source/build_user_guide.py` 生成 `outputs/05_使用说明.pdf`，支持 `--font`、`--bold-font` 指定字体。
 - `build_deck.mjs`：答辩页面的布局与内容源文件，依赖材料制作工具运行时。
 - `build_deck_pdf.py`：把已核对的答辩页面输出为 PDF。
 - `答辩可编辑_v2.pptx`：可直接用演示文稿软件修改的版本，包含可编辑文字、架构图和情景表格。
